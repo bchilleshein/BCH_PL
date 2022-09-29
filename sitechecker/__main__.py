@@ -11,9 +11,9 @@ from sitechecker.cli import display_check_result, read_user_cli_args
 def main():
     user_args = read_user_cli_args()
     urls = user_args.urls
-#    file_path = pathlib.Path(file)
+#   urls = _get_websites_urls(user_args)
     if not urls:
-        print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.") #file=sys.stderr)
+        print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.")
         #print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.",file=sys.stderr)
         sys.exit(1)
     _site_check(urls)

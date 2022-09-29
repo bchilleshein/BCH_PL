@@ -2,19 +2,19 @@ VERIFICANDO A CONECTIVIDADE DE URLS
 
 Este projeto de python visa identificar se um URL está online ou offline, retornando uma mensagem para o usuário.
 
-Ele é composto pela pasta sitechecker que contém 4 arquivos de código (__init__.py, __main__.py, checker.py e cli.py), pelo .gitignore, pelo requirements.txt, de pasta site_checker.sh, além deste arquivo (README.md).
+Ele é composto pela pasta sitechecker que contém 4 arquivos de código (__init__.py, __main__.py, checker.py e cli.py), pelo .gitignore, pelo requirements.txt, pela pasta site_checker.sh, além deste arquivo (README.md).
 
 
 INSTRUÇÕES
 
 
-1. Para iniciar esta aplicação, recomenda-se utilizar um ambiente virtual (venv), para isso, você deve abrir um terminal no programa de sua preferência e rodar os comandos:
+1. Para iniciar esta aplicação, recomenda-se utilizar um ambiente virtual (venv). Para isso, você deve abrir um terminal no programa de sua preferência e rodar os comandos:
 
 cd meuprojeto
 python -m venv venv
 source venv/Scripts/activate
 
-Entendendo um pouco melhor: O 'cd meuprojeto' abre uma pasta chamada meuprojeto; o 'python -m venv venv' cria o ambiente virtual; e o 'source venv/Scripts/activate' ativa o ambiente virtual criado.
+Entendendo um pouco melhor: O 'cd meuprojeto' abre uma pasta chamada meuprojeto; o 'python -m venv venv' cria o ambiente virtual; e o 'source venv/Scripts/activate' ativa o ambiente virtual criado - isso para o Windows.
 Obs.: Você já deve ter criado a pasta meuprojeto.
 
 
@@ -22,7 +22,7 @@ Obs.: Você já deve ter criado a pasta meuprojeto.
 
 mkdir sitechecker
 
-Dentro dessa pasta criaremos os arquivos __init__.py, __main__.py, checker.py e cli.py, a partir de:
+Dentro dessa pasta você gera os arquivos __init__.py, __main__.py, checker.py e cli.py, a partir de:
 
 touch sitechecker/__init__.py
 touch sitechecker/__main__.py
@@ -99,12 +99,13 @@ def display_check_result(result, url, error=""):
         print(f'"Offline?" 👎 \nErro: "{error}".')  
 
 
-Entendendo um pouco melhor: Neste, como mencionado acima, você define como devem ser os comandos que o usuário vai colocar para fazer com que a funcionalidade rode e o que ele vai receber como resultado. Então, você está dizendo que ele deve inserir -u ou --urls, que deve ser um texto e que caso o site esteja online, ele recebe uma mensagem dizendo "O status da "url" é: "Online!" 👍" ou, caso esteja offline, recebe "O status da "url" é: "Offline?" 👎 Erro: "tipo de erro"."  
+Entendendo um pouco melhor: 
+Neste, como mencionado acima, você define como devem ser os comandos que o usuário vai colocar para fazer com que a funcionalidade rode e ele receba algum resultado. Então, você diz que ele deve inserir -u ou --urls e que deve ser um texto. Caso o site esteja online, ele recebe uma mensagem dizendo "O status da "url" é: "Online!" 👍" ou, caso esteja offline, recebe "O status da "url" é: "Offline?" 👎 Erro: "tipo de erro"."  
 
-Obs.: Você vai observar que o código aqui exposto e o fornecido no arquivo cli.py são um pouco diferentes. No código do arquivo há linhas com #, que são um outro argumento para tentar ler e verificar a conectividade de uma lista URLs em um arquivo.csv, por isso também há o 'import csv' para que a conexão aconteça. ***Ressalta-se, no entanto, que para que esse tipo de análise seja possível, outras alterações devem ser feitas nos códigos.
+Obs.: Você vai observar que o código aqui exposto e o fornecido no arquivo cli.py são um pouco diferentes. No código do arquivo há linhas com #, que são um outro argumento para tentar ler e verificar a conectividade de uma lista de URLs em um arquivo. ***Ressalta-se, no entanto, que para que esse tipo de análise seja possível, outras alterações devem ser feitas nos códigos. Inclusive, se você retirar os #, e tentar ler um arquivo por meio de cat (nome_do_arquivo.extensão), ele consegue ler os URLs, mas quando vai realizar a análise, ele não roda.
 
 
-5. Para que a aplicação funcione corretamente, você deve escrever um código que reuna os códigos anteriores. Esse código deve ficar armazenado no arquivo __main__.py. Assim, abra-o no seu editor e insira o código abaixo:
+5. Para que a aplicação funcione corretamente, você deve escrever um código que reuna os códigos anteriores. Esse código deve ficar armazenado no arquivo __main__.py. Assim, abra-o no seu editor e insira o as linhas abaixo:
 
 
 #__main__.py
@@ -136,15 +137,21 @@ def _site_check(urls):
 if __name__ == "__main__":
     main()
 
-Entendendo um pouco melhor: você define 3 funções que puxam informações deste e dos outros arquivos. Na def main(), por exemplo, você chama read_user_cli_args() para analisar os argumentos da linha de comando (aquilo que você vai inserir) e armazena na variável user_args local. Então, ele vai verificar se você esqueceu de colocar um url, se sim, aparece a mensagem "Faltou colocar um URL. Caso precise de ajuda, após sitecheck digite --help.". Caso você tenha colocado, ele vai chamar a função _site_check(), responsável por receber a lista de URLs e aplicar a função site_is_online. Assim, as conexões com os sites são solicitados, se der certo, retorna true e se der errado, retorna um erro.
 
-Obs.: Você vai observar que o código aqui exposto e o fornecido no __main__.py são um pouco diferentes. No código do arquivo há linhas com #, que são comentários contendo pedaçoes de códigos para ler urls de um arquivo. ***Ressalta-se, no entanto, que para que esse tipo de análise seja possível, outras alterações devem ser feitas nos códigos.
+Entendendo um pouco melhor: 
+Você define 3 funções que puxam informações deste e dos outros arquivos. Na def main(), por exemplo, você chama read_user_cli_args() para analisar os argumentos da linha de comando (aquilo que você insere) e armazena na variável user_args local. Então, ele vai verificar se você esqueceu de colocar um url, se sim, aparece a mensagem "Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.". Caso você tenha colocado, ele vai chamar a função _site_check() - responsável por receber a lista de URLs- e aplicar a função site_is_online. Assim, as conexões com os sites são solicitadas, se der certo, retorna true e se der errado, um erro.
+
+Obs.: Você vai observar que o código aqui exposto e o fornecido no __main__.py são um pouco diferentes. No código do arquivo há linhas com #, que são comentários contendo pedaços de códigos para ler urls de um arquivo. 
+***Ressalta-se, no entanto, que para que esse tipo de análise seja possível, outras alterações devem ser feitas nos códigos. Inclusive, se você retirar os # e tentar ler um arquivo por meio de cat (nome_do_arquivo.extensão), ele consegue ler os URLs, mas quando vai realizar a análise, ele não roda.
 
 
-6. A pasta site_checker.sh é para você criar um código que rode essa aplicação em uma certa periodicidade.
+6. O arquivo __init__.py é responsável por ativar o projeto como um pacote do Python. Nele, você pode escrever a versão da aplicação.
 
 
-7. O .gitignore é um arquivo de texto responsável por informar ao Git quais arquivos ou pastas ele deve ignorar no projeto. Você pode pegar um arquivo de .gitignore na internet. No seu caso, o principal arquivo que deve estar no .gitignore é o do venv.
+7. A pasta site_checker.sh é para você criar um código que rode a aplicação em uma certa periodicidade.
+
+
+8. O .gitignore é um arquivo de texto responsável por informar ao Git quais arquivos ou pastas do projeto ele deve ignorar. Você pode pegar um arquivo de .gitignore na internet. No projeto atual, o principal arquivo que deve estar no .gitignore é o do venv.
 
 
 # Environments
@@ -164,6 +171,7 @@ Para verificar se o seu projeto está funcionando, você deve abrir um terminal 
 
 python -m sitechecker -(AQUI VOCÊ COLOCA UM DOS ARGUMENTOS QUE VOCÊ CONFIGUROU)
 
+
 Ex.:
 python -m sitechecker -h
 
@@ -177,6 +185,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -u URLs [URLs ...], --urls URLs [URLs ...]
                         Insira um ou mais URLs.
+
 
 Caso você queira ver a conectividade de um site, você deve digitar:
 

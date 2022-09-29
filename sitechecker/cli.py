@@ -1,7 +1,6 @@
 # cli.py
 
 import argparse
-#import csv
 
 def read_user_cli_args():
     """Handle the CLI arguments and options."""
@@ -21,7 +20,7 @@ def read_user_cli_args():
 #        "-f",
 #        "--input-file",
 #        metavar="FILE",
-#        type=csv,
+#        type=str,
 #        default="",
 #        help="Leia URLs de um arquivo.",
 #    )
