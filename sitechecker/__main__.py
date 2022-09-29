@@ -1,7 +1,9 @@
-from symbol import file_input
+#__main__.py
+
 import sys
 #import pathlib
 
+#from symbol import file_input
 from asyncore import read
 from sitechecker.checker import site_is_online
 from sitechecker.cli import display_check_result, read_user_cli_args
@@ -11,7 +13,8 @@ def main():
     urls = user_args.urls
 #    file_path = pathlib.Path(file)
     if not urls:
-        print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.", file=sys.stderr)
+        print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.") #file=sys.stderr)
+        #print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.",file=sys.stderr)
         sys.exit(1)
     _site_check(urls)
 
@@ -43,5 +46,4 @@ def _site_check(urls):
 #    return[] 
 
 if __name__ == "__main__":
-    main()
-    
+    main()  
