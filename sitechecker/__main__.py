@@ -4,14 +4,13 @@ import sys
 #import pathlib
 
 #from symbol import file_input
-from asyncore import read
 from sitechecker.checker import site_is_online
 from sitechecker.cli import display_check_result, read_user_cli_args
 
 def main():
     user_args = read_user_cli_args()
     urls = user_args.urls
-#   urls = _get_websites_urls(user_args)
+#   urls = get_websites_urls(user_args)
     if not urls:
         print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.")
         #print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.",file=sys.stderr)
