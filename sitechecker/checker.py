@@ -8,7 +8,7 @@ def site_is_online(url, timeout=2):
     Raise an exception otherwise.
     """
     # Defines a generic Exception as placeholder
-    error = Exception("Ops, algo errado.")
+    error = Exception("Ops, algo deu errado.")
     # Parses URL and finds host
     parser = urlparse(url)
     host = parser.netloc or parser.path.split("/")[0]

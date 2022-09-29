@@ -8,7 +8,7 @@ def main():
     user_args = read_user_cli_args()
     urls = user_args.urls
     if not urls:
-        print("Faltou URL cara")
+        print("Faltou colocar um URL. Caso precise de ajuda, após sitechecker digite --help.")
         sys.exit(1)
     _site_check(urls)
 
